@@ -14,8 +14,8 @@ class Surname extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('surname')->default('');;
-            $table->string('patronymic')->default('');;
+            $table->string('surname')->default('');
+            $table->string('patronymic')->default('');
         });
     }
 
