@@ -48,7 +48,7 @@ class TheoryController extends Controller
      */
     public function show(Theory $theory)
     {
-        //
+        return view('theory.show', ['theory' => $theory]);
     }
 
     /**
