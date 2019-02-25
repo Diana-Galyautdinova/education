@@ -2,15 +2,15 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class TheorySeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-         $this->call(TheorySeeder::class);
+        factory(App\Theory::class, 50)->create();
     }
 }

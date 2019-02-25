@@ -14,7 +14,9 @@ class TheoryController extends Controller
      */
     public function index()
     {
-        //
+        $theories = Theory::paginate();
+
+        return view('theory.index', ['theories' => $theories]);
     }
 
     /**
