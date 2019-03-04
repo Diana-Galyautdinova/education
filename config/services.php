@@ -40,4 +40,12 @@ return [
         ],
     ],
 
+    'giphy' => [
+        'key' => env('GIPHY_KEY'),
+    ],
+
+    'pixabay' => [
+        'key' => env('PIXABAY_KEY'),
+    ],
+
 ];
