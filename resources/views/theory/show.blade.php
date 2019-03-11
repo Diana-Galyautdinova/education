@@ -3,5 +3,5 @@
 @section('title', $theory->name)
 
 @section('content')
-    {{ $theory->text }}
+    {!! $theory->text !!}
 @endsection
