@@ -14,4 +14,14 @@ class Question extends Model
     protected $fillable = [
         'id', 'text', 'theory_id'
     ];
+
+    public function theory()
+    {
+        return $this->belongsTo(\App\Theory::class);
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(\App\Answer::class);
+    }
 }

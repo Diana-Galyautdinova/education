@@ -14,4 +14,9 @@ class Theory extends Model
     protected $fillable = [
         'name', 'visible', 'text'
     ];
+
+    public function questions()
+    {
+        return $this->hasMany(\App\Question::class);
+    }
 }

@@ -14,4 +14,9 @@ class Answer extends Model
     protected $fillable = [
         'id', 'text', 'question_id', 'type'
     ];
+
+    public function question()
+    {
+        return $this->belongsTo(\App\Question::class);
+    }
 }
