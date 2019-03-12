@@ -6,7 +6,7 @@
     <ul class="list-group list-group-flush">
         @foreach ($questions as $question)
             <li class="list-group-item">
-                <a href="{{ route('question.show', ['id'=>$question->id]) }}">{{ $question->id.' ' }}question</a>
+                <a href="{{ route('question.show', $question) }}">question {{ $question->id }}</a>
             </li>
         @endforeach
     </ul>

@@ -22,7 +22,13 @@ class TheorySeeder extends Seeder
                     $question->answers()->save(factory(\App\Answer::class)->make(['type' => 1]));
                 } else {
                     for ($k = 0, $kMax = random_int(2, 4); $k < $kMax; $k++) {
-                        $question->answers()->save(factory(\App\Answer::class)->make(['type' => 2]));
+                        $question
+                            ->answers()
+                            ->save(factory(\App\Answer::class)
+                                ->make([
+                                    'type' => 2,
+                                    'is_truth' => !$k
+                                ]));
                     }
                 }
             }
