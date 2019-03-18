@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
+    public const ANSWER_VALID = 'OK';
+    public const ANSWER_INVALID = 'Invalid answer';
+
     /**
      * The attributes that are mass assignable.
      *

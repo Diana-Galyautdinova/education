@@ -24,3 +24,4 @@ Route::resources([
     'question' => 'QuestionController',
 ]);
 
+Route::post('/question/{question}/answer', 'QuestionController@answer')->name('question.answer');

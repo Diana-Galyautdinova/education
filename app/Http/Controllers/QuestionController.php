@@ -32,7 +32,7 @@ class QuestionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,7 +43,7 @@ class QuestionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show(Question $question)
@@ -54,7 +54,7 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -65,8 +65,8 @@ class QuestionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -77,11 +77,34 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
+    }
+
+    public function answer(Request $request, Question $question)
+    {
+        if ($question->answers->count() > 1) {
+            $status = Question::ANSWER_INVALID;
+            foreach ($question->answers as $answer) {
+                if ($answer->is_truth && $answer->text == $request->input('answer')) {
+                    $status = Question::ANSWER_VALID;
+                    break;
+                }
+            }
+        } else {
+            if ($request->input('answer') == $question->answers[0]->text) {
+                $status = Question::ANSWER_VALID;
+            } else {
+                $status = Question::ANSWER_INVALID;
+            }
+        }
+
+        return redirect()
+            ->back()
+            ->with('status', $status);
     }
 }
